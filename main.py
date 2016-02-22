@@ -10,7 +10,7 @@ class PicLab:
         while True:
             print('''\nType the number of the desired operation
                      (1) Convert to grayscale
-                     (2) Resize Image
+                     (2) Resize image
                      (3) Convert to sepia
                      (4) Create pixelated image
                      (5) Create dataset of pictures
