@@ -1,9 +1,9 @@
 class PixelColor:
 
     def __init__(self, red, green, blue):
-        '''
+        """
         Represents color of a single pixel in RGB space
-        '''
+        """
         if self.is_valid_color(red) and self.is_valid_color(blue) and self.is_valid_color(green):
             self.red = red
             self.green = green

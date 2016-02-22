@@ -22,17 +22,8 @@ def resize_and_save_pic(uri, width, height, elaborated_folder):
     return True
 
 
-def make_linear_ramp_not_perfect(white):
+def make_linear_ramp():
     ramp = []
-    r, g, b = white
-    for i in range(int(255)):
-        ramp.extend((int(r*i/255), int(g*i/255), int(b*i/255)))
-    return ramp
-
-
-def make_linear_ramp(white):
-    ramp = []
-    r, g, b = white
     for i in range(int(255)):
         outputRed = int((i * .393) + (i *.769) + (i * .189))
         if outputRed > 255:
@@ -47,14 +38,17 @@ def make_linear_ramp(white):
     return ramp
 
 
+
 def to_sepia_and_save_pic(uri, elaborated_folder):
-    ''' Convert before in grayscale and then in sepia  '''
+    """
+    Convert before in grayscale and then in sepia
+    """
     img = image_utils.open_image(uri, "RGB")
     if img:
         orig_mode = img.mode
         if orig_mode != "L":
             img = img.convert("L")
-        sepia = make_linear_ramp((255, 240, 192))
+        sepia = make_linear_ramp()
         img.putpalette(sepia)
         img = img.convert(orig_mode)
         image_utils.save_image(img, basename(uri), elaborated_folder)
